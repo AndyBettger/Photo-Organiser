@@ -146,7 +146,7 @@ def organize_files(input_dirs, output_path, use_copy, fallback_to_modified, plan
             file_index += 1
             progress_callback(50 + (file_index / total_files * 50))
 
-    log_path = Path(output_path) / "organizer_log.txt"
+    log_path = Path(output_path) / "organiser_log.txt"
     with open(log_path, "w", encoding="utf-8") as f:
         for line in log_lines:
             f.write(line + "\n")
@@ -167,7 +167,7 @@ def organize_files(input_dirs, output_path, use_copy, fallback_to_modified, plan
         "unsure": unsure_count
     }
 
-def run_organizer_async(params):
+def run_organiser_async(params):
     input_dirs, output_folder, use_copy, fallback, plan, hash_method, text_widget, progress, stage_label = params
 
     def log(msg):
@@ -197,7 +197,7 @@ def run_organizer_async(params):
         f"  - {result['unsupported']} unsupported files ignored\n"
         f"  - {result['unsure']} files went to /unsure\n\n"
         f"Total output: {result['organized'] + result['fallback'] + result['duplicates']} organized files\n\n"
-        f"See organizer_log.txt for full details."
+        f"See organiser_log.txt for full details."
     )
     progress["value"] = 100
     stage_label.config(text="Stage: Complete")
@@ -211,7 +211,7 @@ def browse_folder(entry):
 
 def create_gui():
     root = tk.Tk()
-    root.title("Photo Organizer")
+    root.title("Photo Organiser")
 
     tk.Label(root, text="Input Folder 1:").grid(row=0, column=0, sticky="e")
     input1 = tk.Entry(root, width=60)
@@ -257,7 +257,7 @@ def create_gui():
             messagebox.showerror("Error", "Please select at least one input and an output folder.")
             return
         args = (input_dirs, out, use_copy.get(), fallback.get(), plan.get(), hash_method.get(), log_text, progress, stage_label)
-        threading.Thread(target=run_organizer_async, args=(args,), daemon=True).start()
+        threading.Thread(target=run_organiser_async, args=(args,), daemon=True).start()
 
     tk.Button(root, text="Start", command=start).grid(row=10, column=1)
     root.mainloop()
