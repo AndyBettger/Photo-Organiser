@@ -1,112 +1,133 @@
-# Photo Tools Suite
+# 📸 Photo Tools Suite
 
-This repository contains a set of Python tools to help organise and label your photo library.
+A set of Python tools to help organise and label your photo library with intelligent sorting, previewing, and renaming features.
 
 ---
 
-## Tools Included
+## 🧰 Tools Overview
 
-### 📁 1. Photo Organiser
+### 1. Photo Organiser
 **File:** `photo_organiser_gui_v1.1.py`  
-Sorts images and videos by date taken, renames duplicates, and uses EXIF metadata or file modification times.
+Automatically sorts images and videos into folders by date taken using EXIF metadata or fallback to modification dates. Supports duplicate detection and a manual review folder.
 
-### 🖼️ 2. Folder Naming Assistant
-**File:** `folder_namer_gui_v0.6.py`  
-Allows you to review folders of photos and append short descriptions to folder names (e.g. `2024-03-10 Beach Walk`), with thumbnail previews and a full-size click-to-enlarge feature.
+### 2. Folder Naming Assistant
+**File:** `folder_namer_gui_v0.6e.py`  
+Visually previews images in each dated folder, allows you to enter a short name (e.g. `2023-08-10 Brighton Trip`) to rename the folder. Click to view full-size images. Auto-skips empty folders and those already renamed.
 
-### 🚀 3. Photo Tools Launcher
+### 3. Photo Tools Launcher
 **File:** `photo_tools_launcher_v0.1.py`  
-Simple GUI to launch either of the tools above with one click.
+Simple GUI launcher to open either of the above tools with one click.
 
 ---
 
-## Features
+## 🧠 Features
 
-- Thumbnail previews and folder-by-folder navigation
-- Smart duplicate detection and "unsure" folder for manual review
-- Manual renaming tool for quick annotation of date-based folders
-- One-click launcher for convenience
-- EXIF-based sorting and fallback logic for unsupported formats
-
----
-
-## Getting Started
-
-### 🔧 Requirements
-
-- Python 3.8 or later
-- [Pillow](https://pypi.org/project/Pillow/)  
-  Install with:
-  ```
-  pip install pillow
-  ```
+- 📂 Sorts images/videos by date (`YYYY/YYYY-MM-DD`)
+- 🧠 Duplicate detection using SHA-256
+- 🖼️ Thumbnail previews and full-size image viewer
+- ✏️ Rename folders with optional descriptions
+- 🔍 "Unsure" folder for files needing manual review
+- 💡 Supports multiple input folders
+- 🧰 One-click launcher for convenience
+- ✅ EXIF metadata + fallback support
 
 ---
 
-### 🚀 Launch Instructions
+## ⚙️ Requirements
 
-1. Clone or download the repository.
-2. Open a terminal in the script folder.
-3. Run the launcher:
-   ```
-   python photo_tools_launcher_v0.1.py
-   ```
-4. Use the buttons to open:
-   - **Photo Organiser**
-   - **Folder Naming Assistant**
+- **Python 3.10 or later**
+- Python packages:
+  - `tkinter` (comes with Python)
+  - `Pillow`
+  - `pillow-heif` (for HEIC support)
+- `ffprobe` (from [FFmpeg](https://ffmpeg.org)) for video metadata
+
+Install dependencies (if needed):
+```bash
+pip install pillow pillow-heif
+```
 
 ---
 
-## Optional: Running Each Tool Directly
+## 🚀 Getting Started
 
-You can also run the individual tools directly:
+1. Download or clone this repository.
+2. Open a terminal in the folder.
+3. Launch the main tools using:
 
-- Organiser:
-  ```
-  python photo_organiser_gui_v1.1.py
-  ```
+### 🧭 Option A: Use the Launcher
+```bash
+python photo_tools_launcher_v0.1.py
+```
 
-- Folder Namer:
-  ```
-  python folder_namer_gui_v0.6.py
-  ```
+Choose between:
+- **Photo Organiser**
+- **Folder Naming Assistant**
 
-# Photo Organiser
+### 🛠 Option B: Run Each Tool Directly
 
-A powerful tool to organize iPhone photos and videos into dated folders using EXIF metadata or fallback to file modified dates.
-
-## Features
-
-- Organizes `.JPG`, `.MOV`, `.HEIC`, `.PNG`, and more
-- Detects duplicates using SHA-256 or MD5 hashing
-- Supports multiple input folders
-- Sorts files by date taken (`YYYY/YYYY-MM-DD`)
-- GUI frontend using Tkinter
-- Automatically skips or deletes `Thumbs.db`
-- Creates log and duplicate reports
-- Optional fallback to modified date (enabled by default)
-- Supports dry-run planning mode
-
-## Usage
-
-Simply run the GUI:
+**Photo Organiser:**
 ```bash
 python photo_organiser_gui_v1.1.py
 ```
 
-## Requirements
+**Folder Naming Assistant:**
+```bash
+python folder_namer_gui_v0.6e.py
+```
 
-- Python 3.10+
-- `ffprobe` (part of [FFmpeg](https://ffmpeg.org))
-- Python packages:
-  - `Pillow`
-  - `tkinter` (comes with Python)
-  - `pillow-heif` (for HEIC support)
+---
 
-## Versioning
+## 📁 Tool Details
 
-Version: `v1.1`
+### 📁 Photo Organiser
 
-## License
+Organises photos and videos from iPhones and other sources into date folders.
 
-MIT License
+**Features:**
+- Supports `.JPG`, `.JPEG`, `.MOV`, `.PNG`, `.HEIC`, etc.
+- EXIF-based date extraction (fallback to modified date)
+- Duplicate detection via hash comparison
+- "Unsure" folder for manual sorting
+- Dry-run preview mode available
+- Full GUI with progress bar
+
+**Version:** `v1.1`
+
+---
+
+### 🖼️ Folder Naming Assistant
+
+Add descriptions to already date-organised folders by reviewing images visually.
+
+**Features:**
+- Auto-scans subfolders for `.jpg`, `.jpeg`, `.png` images
+- Skips empty folders or already renamed ones
+- Thumbnail previews (click to view full size)
+- Editable folder name box
+- Skip or rename via buttons or [Enter] key
+- Optional full-screen image viewer with black background
+
+**Version:** `v0.6e`
+
+---
+
+### 🚀 Photo Tools Launcher
+
+A convenient launcher for the tools above.
+
+**File:** `photo_tools_launcher_v0.1.py`
+
+**Version:** `v0.1`
+
+---
+
+## 🗂 Versioning & Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for detailed changes per version.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
